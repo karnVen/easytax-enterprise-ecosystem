@@ -7,45 +7,45 @@ EasyTax operates as an interconnected, multi-tier FinTech and e-Governance ecosy
 ```mermaid
 flowchart TB
     subgraph Client Access Channels
-        Taxpayer([Individual Taxpayer / Citizen])
-        Agent([e-Mitra Kiosk Operator / Agent])
-        Corporate([Corporate Business / MSME])
-        Accountant([Chartered Accountant / Reviewer])
+        Taxpayer(["Individual Taxpayer / Citizen"])
+        Agent(["e-Mitra Kiosk Operator / Agent"])
+        Corporate(["Corporate Business / MSME"])
+        Accountant(["Chartered Accountant / Reviewer"])
     end
 
     subgraph Channel 1: Corporate CMS & Lead Engine
-        Taxpayer -->|Web HTTPS| DrupalLive[easytax.live - Drupal 10 CMS]
-        DrupalLive --> TwigTheme[Twig 3 Atomic Design System]
-        DrupalLive --> CalcModules[Custom Tax Slabs & Calculators]
-        DrupalLive --> Intake[Lead Intake & Form 16 Dispatch]
+        Taxpayer -->|Web HTTPS| DrupalLive["easytax.live - Drupal 10 CMS"]
+        DrupalLive --> TwigTheme["Twig 3 Atomic Design System"]
+        DrupalLive --> CalcModules["Custom Tax Slabs & Calculators"]
+        DrupalLive --> Intake["Lead Intake & Form 16 Dispatch"]
     end
 
     subgraph Channel 2: B2B Multi-Portal Operations
-        Corporate -->|Authenticated Portal| B2BLaravel[b2b.easytax.live - Laravel 12]
+        Corporate -->|Authenticated Portal| B2BLaravel["b2b.easytax.live - Laravel 12"]
         Accountant -->|CA Audit Workbench| B2BLaravel
         Intake -.->|REST / Internal Queue| B2BLaravel
-        B2BLaravel --> MultiPortalRouter{Role-Based Portal Scoper}
-        MultiPortalRouter --> AdminPortal[Super Admin Tower]
-        MultiPortalRouter --> AgentPortal[Kiosk Agent Portal]
-        MultiPortalRouter --> TeamPortal[Regional Team Desk]
+        B2BLaravel --> MultiPortalRouter{"Role-Based Portal Scoper"}
+        MultiPortalRouter --> AdminPortal["Super Admin Tower"]
+        MultiPortalRouter --> AgentPortal["Kiosk Agent Portal"]
+        MultiPortalRouter --> TeamPortal["Regional Team Desk"]
     end
 
     subgraph Channel 3: Government e-Governance Gateway
-        Agent -->|Rajasthan SSO Redirection| EMitraGW[e-Mitra Integration Gateway]
-        EMitraGW --> ChecksumEngine[HMAC / MD5 Cryptographic Checksum Engine]
-        ChecksumEngine --> SessionScoper[Financial Cycle Scoper (FY 24-25 / FY 25-26)]
-        SessionScoper --> CommissionLedger[Double-Entry Balance Sheet & Margin Engine]
+        Agent -->|Rajasthan SSO Redirection| EMitraGW["e-Mitra Integration Gateway"]
+        EMitraGW --> ChecksumEngine["HMAC / MD5 Cryptographic Checksum Engine"]
+        ChecksumEngine --> SessionScoper["Financial Cycle Scoper (FY 24-25 / FY 25-26)"]
+        SessionScoper --> CommissionLedger["Double-Entry Balance Sheet & Margin Engine"]
     end
 
     subgraph Channel 4: Next-Gen Mobile & Computation Engine
-        Taxpayer -->|Mobile App| AppDev[Easytax_AppDev - iOS & Android]
-        AppDev --> DeterministicEngine[Paise-Precise Deterministic Calculation Engine]
+        Taxpayer -->|Mobile App| AppDev["Easytax_AppDev - iOS & Android"]
+        AppDev --> DeterministicEngine["Paise-Precise Deterministic Calculation Engine"]
     end
 
     subgraph Persistence & Compliance Tier
-        B2BLaravel --> DB[(MySQL / Transactional Data Tier)]
+        B2BLaravel --> DB[("MySQL / Transactional Data Tier")]
         CommissionLedger --> DB
-        DB --> AuditVault[Immutable Compliance & Audit Trail]
+        DB --> AuditVault["Immutable Compliance & Audit Trail"]
     end
 ```
 
