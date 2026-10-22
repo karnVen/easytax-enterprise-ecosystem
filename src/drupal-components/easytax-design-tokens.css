@@ -1,0 +1,62 @@
+/**
+ * EasyTax Enterprise Design System Tokens
+ * Theme: Obsidian FinTech & Compliance Slate
+ * Architecture: Atomic CSS Custom Properties for Component-Driven Drupal Theme
+ * Author: karnVen (EasyTax Global IT Solutions)
+ */
+
+:root {
+  /* Brand Palette */
+  --et-brand-primary: #10B981;        /* Emerald Growth 500 */
+  --et-brand-primary-hover: #059669;  /* Emerald Dark 600 */
+  --et-brand-accent: #3B82F6;         /* Trust Blue 500 */
+  --et-brand-warning: #F59E0B;        /* Compliance Amber 500 */
+  --et-brand-danger: #EF4444;         /* Audit Alert Red 500 */
+
+  /* Neutral Dark Obsidian Canvas */
+  --et-surface-base: #0B0F19;         /* Obsidian 950 */
+  --et-surface-card: #111827;         /* Gray 900 */
+  --et-surface-elevated: #1F2937;     /* Gray 800 */
+  --et-surface-border: #374151;       /* Gray 700 */
+  --et-surface-border-subtle: #1F2937;
+
+  /* Typography Colors */
+  --et-text-primary: #F9FAFB;         /* Gray 50 */
+  --et-text-secondary: #9CA3AF;       /* Gray 400 */
+  --et-text-muted: #6B7280;           /* Gray 500 */
+  --et-text-inverse: #0B0F19;
+
+  /* Typography Scale */
+  --et-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --et-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --et-text-xs: 0.75rem;              /* 12px */
+  --et-text-sm: 0.875rem;             /* 14px */
+  --et-text-base: 1rem;               /* 16px */
+  --et-text-lg: 1.125rem;             /* 18px */
+  --et-text-xl: 1.25rem;              /* 20px */
+  --et-text-2xl: 1.5rem;              /* 24px */
+  --et-text-3xl: 1.875rem;            /* 30px */
+  --et-text-4xl: clamp(2rem, 4vw, 3rem); /* Responsive Hero Header */
+
+  /* Shadows & Glassmorphism */
+  --et-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --et-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --et-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --et-glass-bg: rgba(17, 24, 39, 0.75);
+  --et-glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Border Radii */
+  --et-radius-sm: 6px;
+  --et-radius-md: 8px;
+  --et-radius-lg: 12px;
+  --et-radius-xl: 16px;
+  --et-radius-full: 9999px;
+
+  /* Spacing Scale */
+  --et-space-2: 0.5rem;               /* 8px */
+  --et-space-3: 0.75rem;              /* 12px */
+  --et-space-4: 1rem;                 /* 16px */
+  --et-space-6: 1.5rem;               /* 24px */
+  --et-space-8: 2rem;                 /* 32px */
+  --et-space-12: 3rem;                /* 48px */
+}

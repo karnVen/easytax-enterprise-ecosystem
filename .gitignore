@@ -1,0 +1,13 @@
+# Environment & Secrets
+.env
+.env.*
+*.sql
+*.pem
+*.key
+
+# Dependencies & Build Cache
+vendor/
+node_modules/
+.DS_Store
+Thumbs.db
+*.log

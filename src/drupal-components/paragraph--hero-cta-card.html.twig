@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Default theme implementation for an Enterprise Hero CTA Card paragraph.
+ *
+ * Available variables:
+ * - paragraph: The paragraph entity with fields.
+ * - content: All paragraph items.
+ *
+ * @see template_preprocess_paragraph()
+ * @package techprosolutions
+ * @author karnVen (EasyTax Global IT Solutions)
+ */
+#}
+{% set heading = content.field_hero_heading|render|trim %}
+{% set subheading = content.field_hero_subheading|render|trim %}
+{% set primary_cta_url = content.field_primary_cta_link.0['#url']|render|default('#') %}
+{% set primary_cta_title = content.field_primary_cta_title|render|trim|default('File Now') %}
+{% set trust_badge_count = content.field_audited_count|render|trim|default('50,000+') %}
+
+<section class="easytax-hero-orbital" data-analytics-region="hero_cta">
+  <div class="easytax-container">
+    <div class="easytax-hero-grid">
+      
+      {# Left Column: Copy, CTAs, and Live Trust Signals #}
+      <div class="easytax-hero-content">
+        <div class="easytax-badge-pill">
+          <span class="easytax-pulse-dot"></span>
+          <span>e-Filing FY 2025-26 Active & Compliant</span>
+        </div>
+
+        <h1 class="easytax-hero-title">
+          {{ heading|default('Maximize Your Tax Refunds with Zero Audit Anxiety') }}
+        </h1>
+
+        <p class="easytax-hero-subtitle">
+          {{ subheading|default('India’s automated dual-regime tax optimization engine. Direct CA review, instant Form 16 autofill, and government e-Mitra integration.') }}
+        </p>
+
+        <div class="easytax-hero-actions">
+          <a href="{{ primary_cta_url }}" class="easytax-btn easytax-btn-primary" id="btn-hero-primary-cta">
+            <span>{{ primary_cta_title }}</span>
+            <svg class="easytax-icon-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="/calculators/regime-comparator" class="easytax-btn easytax-btn-outline" id="btn-hero-regime-calc">
+            <span>Compare Regimes ↗</span>
+          </a>
+        </div>
+
+        <div class="easytax-trust-proof">
+          <div class="easytax-avatars-group">
+            <span class="easytax-avatar-mini" title="Verified CA Review">CA</span>
+            <span class="easytax-avatar-mini" title="Government Certified">eM</span>
+            <span class="easytax-avatar-mini" title="256-Bit SSL Secured">SSL</span>
+          </div>
+          <span class="easytax-trust-caption">
+            Trusted by <strong>{{ trust_badge_count }}</strong> taxpayers & 500+ e-Mitra centers across Rajasthan.
+          </span>
+        </div>
+      </div>
+
+      {# Right Column: Interactive Quick Upload Widget #}
+      <div class="easytax-hero-visual">
+        <div class="easytax-glass-card">
+          <div class="easytax-card-header">
+            <span class="easytax-chip-secure">🔒 256-Bit AES Encrypted</span>
+            <span class="easytax-chip-status">Live Intake</span>
+          </div>
+          <h3 class="easytax-card-title">Instant Form 16 Auto-Parse</h3>
+          <p class="easytax-card-desc">Drop your employer Form 16 PDF to auto-populate gross income, TDS credits, and exemptions in 30 seconds.</p>
+          
+          <div class="easytax-dropzone-stub" id="dropzone-hero-stub">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            </svg>
+            <span>Drag & Drop Form 16 PDF or <u>Browse</u></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
