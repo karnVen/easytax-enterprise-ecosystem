@@ -26,22 +26,22 @@
 ## ◈ System Architecture & Request Lifecycle
 
 ```mermaid
-flowchart TB
-    subgraph Client Access Channels
-        Citizen(["Retail Citizen / Taxpayer"])
-        Kiosk(["e-Mitra Kiosk Agent"])
-        Corporate(["Corporate Business / MSME"])
-        CA(["Chartered Accountant / Reviewer"])
+flowchart TD
+    subgraph Channels["Client Access Channels"]
+        Citizen["Retail Citizen / Taxpayer"]
+        Kiosk["e-Mitra Kiosk Agent"]
+        Corporate["Corporate Business / MSME"]
+        CA["Chartered Accountant / Reviewer"]
     end
 
-    subgraph Channel 1: Corporate Marketing & Intake
+    subgraph C1["Channel 1: Corporate Marketing and Intake"]
         Citizen -->|HTTPS Browsing| DrupalLive["easytax.live - Drupal 10 CMS"]
         DrupalLive --> TwigTheme["Twig 3 Atomic Paragraphs Theme"]
-        DrupalLive --> CalcModules["Custom Tax Slabs & Regime Calculators"]
-        DrupalLive --> LeadIntake["Form 16 Dropzone & Lead Capture"]
+        DrupalLive --> CalcModules["Custom Tax Slabs and Regime Calculators"]
+        DrupalLive --> LeadIntake["Form 16 Dropzone and Lead Capture"]
     end
 
-    subgraph Channel 2: B2B Operational Core
+    subgraph C2["Channel 2: B2B Operational Core"]
         Corporate -->|Secure Auth| B2BLaravel["b2b.easytax.live - Laravel 12"]
         CA -->|CA Review Queue| B2BLaravel
         LeadIntake -.->|Internal Dispatch| B2BLaravel
@@ -49,22 +49,22 @@ flowchart TB
         RoleScoper --> AdminTower["Super Admin Tower"]
         RoleScoper --> AgentDesk["Agent Filing Desk"]
         RoleScoper --> TeamManager["Regional Team Desk"]
-        RoleScoper --> MarketerDesk["Growth & Affiliate Desk"]
+        RoleScoper --> MarketerDesk["Growth and Affiliate Desk"]
     end
 
-    subgraph Channel 3: Government e-Governance Gateway
+    subgraph C3["Channel 3: Government e-Governance Gateway"]
         Kiosk -->|Rajasthan SSO Dispatch| EMitraGateway["Rajasthan e-Mitra Kiosk Gateway"]
         EMitraGateway --> ChecksumEngine["MD5 / HMAC Cryptographic Checksum Engine"]
-        ChecksumEngine --> CycleScoper["Financial Cycle Scoper (FY 24-25 / FY 25-26)"]
+        ChecksumEngine --> CycleScoper["Financial Cycle Scoper - FY 24-25 and FY 25-26"]
         CycleScoper --> LedgerService["Atomic Double-Entry Commission Ledger"]
     end
 
-    subgraph Channel 4: Next-Gen Mobile & Computation
-        Citizen -->|Native App| AppDev["Easytax_AppDev - iOS & Android"]
+    subgraph C4["Channel 4: Next-Gen Mobile and Computation"]
+        Citizen -->|Native App| AppDev["Easytax_AppDev - iOS and Android"]
         AppDev --> DeterministicMath["Paise-Precise Deterministic Tax Engine"]
     end
 
-    subgraph Persistence & Audit
+    subgraph C5["Persistence and Audit"]
         B2BLaravel --> DB[("MySQL / Transactional Relational Data")]
         LedgerService --> DB
         DB --> ImmutableAudit["Audit-Proof Regulatory Logging"]

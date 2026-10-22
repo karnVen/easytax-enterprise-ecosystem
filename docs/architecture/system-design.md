@@ -5,47 +5,48 @@
 EasyTax operates as an interconnected, multi-tier FinTech and e-Governance ecosystem serving retail taxpayers, corporate enterprises, and thousands of rural/urban kiosk operators across Rajasthan.
 
 ```mermaid
-flowchart TB
-    subgraph Client Access Channels
-        Taxpayer(["Individual Taxpayer / Citizen"])
-        Agent(["e-Mitra Kiosk Operator / Agent"])
-        Corporate(["Corporate Business / MSME"])
-        Accountant(["Chartered Accountant / Reviewer"])
+flowchart TD
+    subgraph Channels["Client Access Channels"]
+        Citizen["Retail Citizen / Taxpayer"]
+        Kiosk["e-Mitra Kiosk Agent"]
+        Corporate["Corporate Business / MSME"]
+        CA["Chartered Accountant / Reviewer"]
     end
 
-    subgraph Channel 1: Corporate CMS & Lead Engine
-        Taxpayer -->|Web HTTPS| DrupalLive["easytax.live - Drupal 10 CMS"]
-        DrupalLive --> TwigTheme["Twig 3 Atomic Design System"]
-        DrupalLive --> CalcModules["Custom Tax Slabs & Calculators"]
-        DrupalLive --> Intake["Lead Intake & Form 16 Dispatch"]
+    subgraph C1["Channel 1: Corporate Marketing and Intake"]
+        Citizen -->|HTTPS Browsing| DrupalLive["easytax.live - Drupal 10 CMS"]
+        DrupalLive --> TwigTheme["Twig 3 Atomic Paragraphs Theme"]
+        DrupalLive --> CalcModules["Custom Tax Slabs and Regime Calculators"]
+        DrupalLive --> LeadIntake["Form 16 Dropzone and Lead Capture"]
     end
 
-    subgraph Channel 2: B2B Multi-Portal Operations
-        Corporate -->|Authenticated Portal| B2BLaravel["b2b.easytax.live - Laravel 12"]
-        Accountant -->|CA Audit Workbench| B2BLaravel
-        Intake -.->|REST / Internal Queue| B2BLaravel
-        B2BLaravel --> MultiPortalRouter{"Role-Based Portal Scoper"}
-        MultiPortalRouter --> AdminPortal["Super Admin Tower"]
-        MultiPortalRouter --> AgentPortal["Kiosk Agent Portal"]
-        MultiPortalRouter --> TeamPortal["Regional Team Desk"]
+    subgraph C2["Channel 2: B2B Operational Core"]
+        Corporate -->|Secure Auth| B2BLaravel["b2b.easytax.live - Laravel 12"]
+        CA -->|CA Review Queue| B2BLaravel
+        LeadIntake -.->|Internal Dispatch| B2BLaravel
+        B2BLaravel --> RoleScoper{"4-Tier Role Middleware"}
+        RoleScoper --> AdminTower["Super Admin Tower"]
+        RoleScoper --> AgentDesk["Agent Filing Desk"]
+        RoleScoper --> TeamManager["Regional Team Desk"]
+        RoleScoper --> MarketerDesk["Growth and Affiliate Desk"]
     end
 
-    subgraph Channel 3: Government e-Governance Gateway
-        Agent -->|Rajasthan SSO Redirection| EMitraGW["e-Mitra Integration Gateway"]
-        EMitraGW --> ChecksumEngine["HMAC / MD5 Cryptographic Checksum Engine"]
-        ChecksumEngine --> SessionScoper["Financial Cycle Scoper (FY 24-25 / FY 25-26)"]
-        SessionScoper --> CommissionLedger["Double-Entry Balance Sheet & Margin Engine"]
+    subgraph C3["Channel 3: Government e-Governance Gateway"]
+        Kiosk -->|Rajasthan SSO Dispatch| EMitraGateway["Rajasthan e-Mitra Kiosk Gateway"]
+        EMitraGateway --> ChecksumEngine["MD5 / HMAC Cryptographic Checksum Engine"]
+        ChecksumEngine --> CycleScoper["Financial Cycle Scoper - FY 24-25 and FY 25-26"]
+        CycleScoper --> LedgerService["Atomic Double-Entry Commission Ledger"]
     end
 
-    subgraph Channel 4: Next-Gen Mobile & Computation Engine
-        Taxpayer -->|Mobile App| AppDev["Easytax_AppDev - iOS & Android"]
-        AppDev --> DeterministicEngine["Paise-Precise Deterministic Calculation Engine"]
+    subgraph C4["Channel 4: Next-Gen Mobile and Computation"]
+        Citizen -->|Native App| AppDev["Easytax_AppDev - iOS and Android"]
+        AppDev --> DeterministicMath["Paise-Precise Deterministic Tax Engine"]
     end
 
-    subgraph Persistence & Compliance Tier
-        B2BLaravel --> DB[("MySQL / Transactional Data Tier")]
-        CommissionLedger --> DB
-        DB --> AuditVault["Immutable Compliance & Audit Trail"]
+    subgraph C5["Persistence and Audit"]
+        B2BLaravel --> DB[("MySQL / Transactional Relational Data")]
+        LedgerService --> DB
+        DB --> ImmutableAudit["Audit-Proof Regulatory Logging"]
     end
 ```
 
